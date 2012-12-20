@@ -3,6 +3,8 @@
 
 */
 
+#ifndef LIB_INCLUDED
+
 #include "lib.h"
 #define USE_VAR_POOL
 //#define PRINT_KVALS
@@ -181,3 +183,4 @@ int process_numeric_args(int argc, char ** args, double * processed_args){
     return j;
 }
 
+#endif
