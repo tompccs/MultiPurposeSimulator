@@ -105,7 +105,7 @@ double free_2d_orbit_functions(double * vars_in, int function_ref){
                 ydiff = vars_in[a + 2] - vars_in[i*5 + 2];
 
                 // check for collision
-                if(xdiff <= DBL_EPSILON){
+                if(fabs(xdiff) <= DBL_EPSILON){
                     continue;
                 }
 
@@ -130,7 +130,7 @@ double free_2d_orbit_functions(double * vars_in, int function_ref){
                 ydiff = vars_in[a + 2] - vars_in[i*5 + 2];
 
                 // check for collision
-                if(ydiff <= DBL_EPSILON){
+                if(fabs(ydiff) <= DBL_EPSILON){
                     continue;
                 }
 
@@ -219,7 +219,7 @@ double free_3d_orbit_functions(double * vars_in, int function_ref){
                 zdiff = vars_in[a + 3] - vars_in[i*7 + 3];
 
                 // check for collision
-                if(xdiff <= DBL_EPSILON){
+                if(fabs(xdiff) <= DBL_EPSILON){
                     continue;
                 }
 
@@ -245,7 +245,7 @@ double free_3d_orbit_functions(double * vars_in, int function_ref){
                 zdiff = vars_in[a + 3] - vars_in[i*7 + 3];
 
                 // check for collision
-                if(ydiff <= DBL_EPSILON){
+                if(fabs(ydiff) <= DBL_EPSILON){
                     continue;
                 }
 
@@ -270,7 +270,7 @@ double free_3d_orbit_functions(double * vars_in, int function_ref){
                 zdiff = vars_in[a + 3] - vars_in[i*7 + 3];
 
                 // check for collision
-                if(zdiff <= DBL_EPSILON){
+                if(fabs(zdiff) <= DBL_EPSILON){
                     continue;
                 }
 

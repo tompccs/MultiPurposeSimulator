@@ -9,7 +9,7 @@
 #include <float.h>
 
 #define GRAVITATIONAL_CONSTANT 6.673E-11
-#define VERBOSE_DEBUG
+// #define VERBOSE_DEBUG
 
 extern int body_count;
 
