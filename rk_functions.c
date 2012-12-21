@@ -106,7 +106,7 @@ double free_2d_orbit_functions(double * vars_in, int function_ref){
 
                 // check for collision
                 if(xdiff <= DBL_EPSILON){
-                    return 0;
+                    continue;
                 }
 
                 #ifdef VERBOSE_DEBUG
@@ -131,7 +131,7 @@ double free_2d_orbit_functions(double * vars_in, int function_ref){
 
                 // check for collision
                 if(ydiff <= DBL_EPSILON){
-                    return 0;
+                    continue;
                 }
 
                 #ifdef VERBOSE_DEBUG
@@ -176,7 +176,7 @@ double free_3d_orbit_functions(double * vars_in, int function_ref){
     7 --> mass of body 0
     .
     .
-    (body count * 6 + 1)
+    (body count * 7 + 1)
       --> time limit
     */
 
@@ -196,19 +196,19 @@ double free_3d_orbit_functions(double * vars_in, int function_ref){
     switch(actual_function_ref){
     case 1:
         #ifdef VERBOSE_DEBUG
-        printf("body %d x-velocity = %lf (index %d)\n", body_index, vars_in[a + 3], a+3);
-        #endif
-        return vars_in[a + 3];
-    case 2:
-        #ifdef VERBOSE_DEBUG
-        printf("body %d y-velocity = %lf (index %d)\n", body_index, vars_in[a + 4], a+4);
+        printf("body %d x-velocity = %lf (index %d)\n", body_index, vars_in[a + 4], a+4);
         #endif
         return vars_in[a + 4];
-    case 3:
+    case 2:
         #ifdef VERBOSE_DEBUG
-        printf("body %d z-velocity = %lf (index %d)\n", body_index, vars_in[a + 5], a+5);
+        printf("body %d y-velocity = %lf (index %d)\n", body_index, vars_in[a + 5], a+5);
         #endif
         return vars_in[a + 5];
+    case 3:
+        #ifdef VERBOSE_DEBUG
+        printf("body %d z-velocity = %lf (index %d)\n", body_index, vars_in[a + 6], a+6);
+        #endif
+        return vars_in[a + 6];
     case 4:
         // x-acceleration
         total_acceleration = 0;
@@ -220,7 +220,7 @@ double free_3d_orbit_functions(double * vars_in, int function_ref){
 
                 // check for collision
                 if(xdiff <= DBL_EPSILON){
-                    return 0;
+                    continue;
                 }
 
                 #ifdef VERBOSE_DEBUG
@@ -246,7 +246,7 @@ double free_3d_orbit_functions(double * vars_in, int function_ref){
 
                 // check for collision
                 if(ydiff <= DBL_EPSILON){
-                    return 0;
+                    continue;
                 }
 
                 #ifdef VERBOSE_DEBUG
@@ -271,7 +271,7 @@ double free_3d_orbit_functions(double * vars_in, int function_ref){
 
                 // check for collision
                 if(zdiff <= DBL_EPSILON){
-                    return 0;
+                    continue;
                 }
 
                 #ifdef VERBOSE_DEBUG
@@ -294,7 +294,6 @@ int free_3d_orbit_runge_kutta_4th(double * vars_in, double * vars_out, double st
     // this is a 3D simulation, so the number of variables is 7 * body_count + 1
     // (6 variables: xpos, ypos, zpos, xvel, yvel, zvel and 1 constant/body: mass of body)
     runge_kutta_4th(&free_3d_orbit_functions, vars_in, vars_out, 7 * body_count + 1, 1, step);
-
     // check the terminating condition. In this case, a time limit.
     if(vars_out[0] >= vars_in[7 * body_count + 1]){
         return STOP_ITERATING;

@@ -3,13 +3,12 @@
 
 */
 
+
 #import "lib.h"
 #include "rk_functions.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
-// #define VERBOSE_DEBUG
 
 #define FLAG_ARRAY {"--orbit", "--simple", "--free", "--2D", "--3D", "--help", "--stdout", "--resume"}
 #define FLAG_ARRAY_SIZE 7
@@ -22,6 +21,8 @@
 #define FLAG_HELP 32
 #define FLAG_STDOUT 64
 #define FLAG_RESUME 128
+
+int body_count;
 
 int main(int argc, char ** args);
 void help();

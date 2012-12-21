@@ -9,8 +9,9 @@
 #include <float.h>
 
 #define GRAVITATIONAL_CONSTANT 6.673E-11
+#define VERBOSE_DEBUG
 
-static int body_count = 1;
+extern int body_count;
 
 double simple_2d_orbit_functions(double * vars_in, int function_ref);
 int simple_2d_orbit_runge_kutta_4th(double * vars_in, double * vars_out, double step);
