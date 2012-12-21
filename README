@@ -8,16 +8,17 @@ The program is made up of 3 .c files (each with its own header .h file):
 >> lib.c
 	'--	A general purpouse library for solving differential equations. In theory, any method
 		for solving DEs can be implemented by writing a function and passing a function pointer to
-		iterate_to_file(). 4th order Runge-Kutta is implemented in this way. It also contains some
-		helper functions for parsing command line arguments.
+		iterate_to_file(). 4th order Runge-Kutta (runge_kutta_4th()) is implemented in this way. 
+		It also contains some helper functions for parsing command line arguments.
 >> rk_functions.c
 	'-- For each type of simulation, there are two functions. One is passed into iterate_to_file(),
-		and in turn calls its corresponding set of functions, typically one for each variable in the
-		system of differential equations. In theory, these functions can be used in solving their
-		system of equations by other methods, such as Gauss' or higher-order RK.
+		in turn calling runge_kutta_4th(), passing into it a function pointer to  its corresponding
+		set of functions, typically one for each variable in the system of differential equations. 
+		In theory, these functions can be used in solving their	system of equations by other methods, 
+		such as Gauss' or higher-order RK.
 
 There is also a python script for visualising the data. It reads from the standard input and takes
-two arguments. Argument 1 is the scale factor (expressed as a number of distance units per screen pixel)
+two arguments. Argument 1 is the scale factor (expressed as half the number of distance units displayed)
 and argument 2 is a file to output the data to exactly as it is read from the standard input. You may 
 also specify --noflush to read in a simulation (perhaps from an existing file) before drawing it.
 
@@ -27,7 +28,7 @@ gcc ./lib.h ./rk_functions.h ./main.h ./lib.c ./rk_functions.c ./main.c -o ./sim
 
 == EXAMPLE COMMANDS ==
 
-./simulator ./out.csv --simple --orbit --2D 0 1E7 0 2E3 0 1E26 1E6 1
+./simulator ./out.csv --simple --orbit --2D 0 3E7 0 0 10E3 0 1E26 1E6 10
 	'--	Simulates a simple 2D orbit with one body orbiting another static body and writes the result to 
 	./out.csv
 
@@ -42,3 +43,6 @@ gcc ./lib.h ./rk_functions.h ./main.h ./lib.c ./rk_functions.c ./main.c -o ./sim
 		but they are useful for keeping track of which variable is which. The result is visualised and 
 		written to ./out.csv 
 
+./simulator --stdout --3D --free --orbit timestart: 0 earth: pos 0, 0, 0 vel 0, 0, 0 mass 5.97E24 moon: pos 0, .5E8 -3.84E8 vel 1E3, 0, 0 7.3477E22 timelimit: 5E6 600 | ./visual.py 4E9 ./myout.csv
+	'-- Simulates 2 bodies in 3D and visualises them with a 2D top-down projection, also writing result
+		to ./myout.csv

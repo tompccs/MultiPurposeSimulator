@@ -24,21 +24,31 @@ double simple_2d_orbit_functions(double * vars_in, int function_ref){
     // Orbit function with one static object being orbited by another in 2 dimensions
     switch(function_ref){
     case 1:
-        return vars_in[3];
+        if(fabs(vars_in[1]) <= DBL_EPSILON && fabs(vars_in[2]) <= DBL_EPSILON){
+            return 0;
+        }else{
+            return vars_in[3];
+        }
     case 2:
-        return vars_in[4];
+        if(fabs(vars_in[1]) <= DBL_EPSILON && fabs(vars_in[2]) <= DBL_EPSILON){
+            return 0;
+        }else{
+            return vars_in[4];
+        }
     case 3:
-        if(vars_in[1] <= DBL_EPSILON){
+        if(fabs(vars_in[1]) <= DBL_EPSILON){
             return 0;
         }else{
             return - GRAVITATIONAL_CONSTANT * vars_in[5]*vars_in[1]/pow(pow(vars_in[1],2)+pow(vars_in[2],2), 1.5);   
         }
     case 4:
-        if(vars_in[2] <= DBL_EPSILON){
+        if(fabs(vars_in[2]) <= DBL_EPSILON){
+            return 0;
+        }else{
             return - GRAVITATIONAL_CONSTANT * vars_in[5]*vars_in[2]/pow(pow(vars_in[1],2)+pow(vars_in[2],2), 1.5);
         }
     default:
-        return vars_in[function_ref];
+        return 0;
     }
 }
 
