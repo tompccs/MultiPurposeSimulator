@@ -1,6 +1,5 @@
---*
-*.o
-*.pyc
-*.dSYM
-*.gch
-*#
+--2013-02-06 19:02:24--  https://raw.github.com/github/gitignore/master/C.gitignore
+Resolving raw.github.com (raw.github.com)... 199.27.75.130, 199.27.75.130, 74.120.188.125
+Connecting to raw.github.com (raw.github.com)|199.27.75.130|:443... connected.
+ERROR: The certificate of `raw.github.com' is not trusted.
+ERROR: The certificate of `raw.github.com' hasn't got a known issuer.
