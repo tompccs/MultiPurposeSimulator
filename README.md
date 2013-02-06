@@ -24,7 +24,7 @@ There is also a python script for visualising the data. It reads from the standa
 To Compile
 ==========
 ```
-gcc ./lib.h ./rk_functions.h ./main.h ./lib.c ./rk_functions.c ./main.c -o ./simulator
+gcc -lm ./lib.h ./rk_functions.h ./main.h ./lib.c ./rk_functions.c ./main.c -o ./simulator
 ```
 
 Example Commands
