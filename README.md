@@ -23,26 +23,26 @@ There is also a python script for visualising the data. It reads from the standa
 
 To Compile
 ==========
-'''
+```
 gcc ./lib.h ./rk_functions.h ./main.h ./lib.c ./rk_functions.c ./main.c -o ./simulator
-'''
+```
 
 Example Commands
 ================
 
-'''
+```
 ./simulator ./out.csv --simple --orbit --2D 0 3E7 0 0 10E3 0 1E26 1E6 10
-'''
+```
 Simulates a simple 2D orbit with one body orbiting another static body and writes the result to ./out.csv
 
-'''
+```
 ./simulator --stdout --orbit --free --2D starttime: 0s earth: 0 0 0 0 6E24 moon: 384.4E6 0 0 1E3 7.3E22 probe: 7E6 0 10.35E3 2.75E3 20E3kg timelim: 1E9s step: 10s | ./visual.py 1E9 ./out.csv
-'''
+```
 Simulates 3 bodies in 2D corresponding to the given initial conditions. Note that the annotations (such as 'starttime:', 'earth:', 'moon:', 'timelim:' and 'step:') around the numerical arguments are not required and will be ignored by the program (bodies are indexed numerically in the output) but they are useful for keeping track of which variable is which. The result is visualised and written to ./out.csv 
 
-'''
+```
 ./simulator --stdout --3D --free --orbit timestart: 0 earth: pos 0, 0, 0 vel 0, 0, 0 mass 5.97E24 moon: pos 0, .5E8 -3.84E8 vel 1E3, 0, 0 7.3477E22 timelimit: 5E6 600 | ./visual.py 4E9 ./myout.csv
-'''
+```
 Simulates 2 bodies in 3D and visualises them with a 2D top-down projection, also writing result to ./myout.csv
 
 More Info
